@@ -3,6 +3,8 @@ const punycode = require("punycode");
 const NodeCache = require("node-cache");
 const { NodeClient } = require("hs-client");
 
+const logger = require("./logger");
+
 const host = process.env.HOSTNAME || "0.0.0.0";
 const port = Number(process.env.PORT) || 3100;
 
@@ -30,7 +32,7 @@ const getDomainRecords = async (name) => {
   const response = await client.execute("getnameresource", [name]);
   const records = response?.records ?? null;
 
-  console.log(`${name} => ${JSON.stringify(records)}`);
+  logger.info(`${name} => ${JSON.stringify(records)}`);
 
   cache.set(name, records);
 
