@@ -32,14 +32,19 @@ class Server {
     this.app.get("/hnsres/:name", async (req, res) => {
       try {
         const result = await this.resolver.resolve(req.params.name);
-        if (result.registry) {
-          result.skylink;
-        }
         res.json(result);
       } catch (error) {
-        res.status(error.code || 500).send(`Handshake error: ${error.message}`);
+        res.status(this.getStatusCodeForError(error)).send(`Handshake error: ${error.message}`);
       }
     });
+  }
+
+  getStatusCodeForError(error) {
+    if (error instanceof ResolutionError) {
+      return 404;
+    }
+
+    return 500;
   }
 
   /**

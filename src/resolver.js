@@ -5,15 +5,10 @@ const { NodeClient } = require("hs-client");
 const logger = require("./logger");
 
 // Match both `sia://HASH` and `HASH` links.
-const SKYLING_REGEXP = /^(sia:\/\/)?[a-zA-Z0-9_-]{46}/;
+const SKYLINK_REGEXP = /^(sia:\/\/)?[a-zA-Z0-9_-]{46}$/;
 const REGISTRY_ENTRY_REGEXP = /^skyns:\/\/(?<publickey>[a-zA-Z0-9%]+)\/(?<datakey>[a-zA-Z0-9%]+)$/;
 
-class ResolutionError extends Error {
-  constructor(message, code) {
-    super(message);
-    this.code = 404;
-  }
-}
+class ResolutionError extends Error {}
 
 /**
  * @typedef {Object} HSRecord
@@ -126,7 +121,7 @@ class Resolver {
     const entry = record?.txt?.find((entry) => this.isValidRegistryEntry(entry));
 
     if (entry) {
-      const match = entry.match(registryEntryRegExp);
+      const match = entry.match(REGISTRY_ENTRY_REGEXP);
 
       if (match)
         return {
@@ -147,7 +142,7 @@ class Resolver {
    * @returns {boolean}
    */
   isValidSkylink(value) {
-    return Boolean(value && value.match(SKYLING_REGEXP));
+    return Boolean(value && value.match(SKYLINK_REGEXP));
   }
 
   /**
