@@ -34,7 +34,10 @@ class Server {
         const result = await this.resolver.resolve(req.params.name);
         res.json(result);
       } catch (error) {
-        res.status(this.getStatusCodeForError(error)).send(`Handshake error: ${error.message}`);
+        res
+          .status(this.getStatusCodeForError(error))
+          .contentType("text/plain; charset=utf-8")
+          .send(`Handshake error: ${error.message}`);
       }
     });
   }

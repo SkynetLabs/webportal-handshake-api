@@ -14,6 +14,18 @@ describe("Server", () => {
   });
 
   describe("/hnsres/:name route", () => {
+    describe("when error is returned", () => {
+      beforeAll(() => {
+        jest.spyOn(app.resolver, "resolve").mockRejectedValue(new Error("<script>alert(0);</script>"));
+      });
+
+      it("responds with content-type: text/plain", async () => {
+        const response = await fetch("http://0.0.0.0:1234/hnsres/wrong-domain.com");
+
+        expect(response.headers.get("content-type")).toEqual("text/plain; charset=utf-8");
+      });
+    });
+
     describe("when domain is configured with a skylink", () => {
       const configuredSkylink = "AQCYCPSmSMfmZjOKLX4zoYHHTNJQW2daVgZ2PTpkASFlSA";
 
