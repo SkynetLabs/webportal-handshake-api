@@ -12,7 +12,7 @@ class ResolutionError extends Error {}
 
 /**
  * @typedef {Object} HSRecord
- * This documentation only mentiones properties used by this service. If you need more information,
+ * This documentation only mentions properties used by this service. If you need more information,
  * visit https://hsd-dev.org/guides/resource-records.html.
  *
  * @property {string}   type  Record type. In case of this application, we only care about TXT records.
@@ -76,7 +76,7 @@ class Resolver {
   /**
    * Get Handshake domain records for a given domain
    *
-   * @param {string} domainName Domain name to be checked for DNS link records.
+   * @param {string} name Domain name to be checked for DNS link records.
    * @returns {Promise<HSRecord[]>}
    */
   async getDomainRecords(name) {
