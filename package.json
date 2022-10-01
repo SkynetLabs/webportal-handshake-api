@@ -8,7 +8,7 @@
     "hs-client": "^0.0.11",
     "node-cache": "^5.1.2",
     "punycode": "^2.1.1",
-    "winston": "^3.8.1"
+    "winston": "^3.8.2"
   },
   "devDependencies": {
     "@types/jest": "^29.0.0",
