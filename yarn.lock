@@ -1436,10 +1436,10 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-hs-client@^0.0.11:
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/hs-client/-/hs-client-0.0.11.tgz#6ee3e8cc997d94911884bd8b3c73e7fee34321c1"
-  integrity sha512-DunENysXNxADDs6YvTjIgFG38U+mGnlDpfEhUzHOAOnkHyYwAIm0PwYJEmJqsbLnpY31xg0lPfRV8t+Ugz+Dew==
+hs-client@^0.0.13:
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/hs-client/-/hs-client-0.0.13.tgz#17eab2218f77f43c5dc3fa84371ba59ebf1c554e"
+  integrity sha512-3Vm/4S0TDstbOW+OfdTeP2EQ4dolPNqMulTSr31RihwX8cX1DyT4il1Fc9STXXToXTsZuFro2WD/+1m0MWi5Ag==
   dependencies:
     bcfg "~0.1.7"
     bcurl "~0.2.0"
